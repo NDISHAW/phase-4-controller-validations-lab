@@ -13,8 +13,7 @@ class AuthorsController < ApplicationController
     author = Author.create!(author_params)
 
     render json: author, status: :created
-  rescue ActiveRecord::RecordInvalid => invalid
-    render json: { errors: invalid.record.errors }, status: :unprocessable_entity
+  
   end
 
   private
