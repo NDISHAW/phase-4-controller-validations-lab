@@ -1,6 +1,6 @@
 class AuthorsController < ApplicationController
-  rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+
   
   
   def show
@@ -10,11 +10,9 @@ class AuthorsController < ApplicationController
   end
 
   def create
-    author = Author.create!(author_params)
+    author = Author.create(author_params)
 
     render json: author, status: :created
-  rescue ActiveRecord::RecordInvalid => invalid
-    render json: { errors: invalid.record.errors }, status: :unprocessable_entity
   end
 
   private

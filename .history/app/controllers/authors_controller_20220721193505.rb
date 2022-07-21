@@ -13,8 +13,6 @@ class AuthorsController < ApplicationController
     author = Author.create!(author_params)
 
     render json: author, status: :created
-  rescue ActiveRecord::RecordInvalid => invalid
-    render json: { errors: invalid.record.errors }, status: :unprocessable_entity
   end
 
   private
@@ -26,7 +24,7 @@ class AuthorsController < ApplicationController
     render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
   end
   def render_not_found_response
-    render json: { error: "Author not found" }, status: :not_found
+    render json: { error: "a kind of Hash" }, status: :not_found
   end
   
 end
